@@ -46,7 +46,7 @@ Second, for each setting, we generate an independent sample of size *n = 100* an
 
 The four mean estimators perform almost identically for the normal data. For the heavy-tailed skewed distributions, the deviation of the sample mean from the population mean grows rapidly with the confidence level, in striking contrast to the DA-Huber estimator, the Adaptive Gradient Descent estimator, and the Adaptive Gradient Descent with Barzilai-Borwein Method.
 
-![figure 1](https://github.com/YichiZhang-Oxford/pyAutoAdaptiveRobustRegression/blob/main/example/figure_1.png)
+![figure 1](https://github.com/YichiZhang-Oxford/rAutoARR/blob/main/example/figure_1.png)
 
 **Figure 1**: Estimation error versus confidence level for the sample mean, the DA-Huber, and the Adaptive Gradient Descent estimator, and the Adaptive Gradient Descent with Barzilai-Borwein estimator based on *2000* simulations.
 
@@ -54,7 +54,7 @@ Finally, in **Figure 2**, we examine the *99%*-quantile of the estimation error 
 
 The DA-Huber, the Adaptive Gradient Descent estimator, and the Adaptive Gradient Descent with Barzilai-Borwein estimator show substantial improvement in the deviations from the population mean because the distribution tends to have heavier tails and becomes more skewed.
 
-![figure 2](https://github.com/YichiZhang-Oxford/pyAutoAdaptiveRobustRegression/blob/main/example/figure_2.png)
+![figure 2](https://github.com/YichiZhang-Oxford/rAutoARR/blob/main/example/figure_2.png)
 
 **Figure 2**: Empirical *99%*-quantile of the estimation error versus a parameter measuring
 the tails and skewness for the sample mean, the DA-Huber, and the Adaptive Gradient Descent estimator, and the Adaptive Gradient Descent with Barzilai-Borwein estimator
