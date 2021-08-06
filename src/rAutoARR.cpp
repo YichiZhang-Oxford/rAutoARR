@@ -4,9 +4,9 @@
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::plugins(cpp11)]]
 
-/* --------------------------------- */    
+              /* --------------------------------- */    
 /*------------ Tuning-Free Huber Regression Funtions ---------------*/
-/* --------------------------------- */ 
+              /* --------------------------------- */ 
 
 
 // [[Rcpp::export]]
@@ -336,9 +336,9 @@ arma::vec huberReg(const arma::mat& X, arma::vec Y, const double tol = 0.0001, c
   return beta;
 }
 
-/* ------------------------------- */    
-/*------------ Adaptive Gradient Descent Functions ------------*/
-/* ------------------------------- */ 
+              /* ------------------------------------ */    
+/*------------ Alternating Gradient Descent Functions ------------*/
+              /* ------------------------------------ */    
 
 // [[Rcpp::export]]
 double LnVal(const arma::vec &Y, double mu, double tau, const int n, double z)
