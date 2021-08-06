@@ -4,74 +4,42 @@
 
 ## Description
 
-This python package implements the Adaptive Gradient Descent, Adaptive Gradient Descent with Barzilai-Borwein Method and Adaptive Gradient Descent with Backtracking Method. It also includes the Huber Mean Estimation, Huber Covariance Matrix Estimation, Huber Regression and Adaptive Huber Regression from `R` library [FarmTest](https://CRAN.R-project.org/package=FarmTest), written by [Xiaoou Pan](https://www.math.ucsd.edu/~xip024/).
+This R package implements the Adaptive Gradient Descent, Adaptive Gradient Descent with Barzilai-Borwein Method and Adaptive Gradient Descent with Backtracking Method. It also includes the Huber Mean Estimation, Huber Covariance Matrix Estimation, Huber Regression and Adaptive Huber Regression from `R` library [FarmTest](https://CRAN.R-project.org/package=FarmTest), written by [Xiaoou Pan](https://www.math.ucsd.edu/~xip024/).
 
 ## Installation
 
-This python package can be installed on **Windows**, **Mac** and **Linux**.
+Install `rAutoARR` from GitHub:
 
-Install `pyAutoAdaptiveRobustRegression` with `pip`:
-
+```r
+install.packages("devtools")
+library(devtools)
+devtools::install_github("YichiZhang-Oxford/rAutoARR")
+library(rAutoARR)
 ```
-pip install pyAutoAdaptiveRobustRegression
-```
-
-## Requirements on Operating Systems
-
-For Windows:
-
-There is no requirement for Windows. The armadillo and openblas libraries have already included.
-
-For Mac:
-
-```
-brew install armadillo
-```
-
-For Linux:
-
-```
-apt install armadillo openblas
-```
-
-## Common Error Messages
-
-Some common error messages along with their solutions are collected below, and we'll keep updating them based on users' feedback:
-
-1. **Error**: 6): Symbol not found: ___addtf3 Referenced from: /usr/local/opt/gcc/lib/gcc/11/libquadmath.0.dylib 
-Expected in: /usr/lib/libSystem.B.dylib 
-in /usr/local/opt/gcc/lib/gcc/11/libquadmath.0.dylib
-
-   **Solution**: After running `brew config` and `brew doctor`, found out the problem was due to that gcc is not linked. Running `sudo chown -R $(whoami) /usr/local/lib/gcc` and then `brew link gcc` solved the problem. [(more details)](https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1053)
 
 ## Functions
 
 There are seven functions in this package:
 
 -   `agd`: Adaptive Gradient Descent
--   `agd_bb`: Adaptive Gradient Descent with Barzilai-Borwein Method
--   `agd_backtracking`: Adaptive Gradient Descent with Backtracking Method
--   `huber_mean`: Huber Mean Estimation
--   `huber_cov`: Huber Covariance Matrix Estimation
--   `huber_reg`: Huber Regression
--   `ada_huber_reg`: Adaptive Huber Regression
-
+-   `agdBB`: Adaptive Gradient Descent with Barzilai-Borwein Method
+-   `agdBacktracking`: Adaptive Gradient Descent with Backtracking Method
+-   `huberMean`: Huber Mean Estimation
+-   `huberCov`: Huber Covariance Matrix Estimation
+-   `huberReg`: Huber Regression
+-   `adaHuberReg`: Adaptive Huber Regression
 
 ## Examples 
 
 First, we present an example of mean estimation about Huber and Adaptive Gradient Descent related methods. We generate data from a log-normal distribution, which is asymmetric and heavy-tailed.
 
-```
-# Import libraries
-import numpy as np
-import pyAutoAdaptiveRobustRegression as arr
-
-# Mean estimation
+```r
+library(rAutoARR)
 n = 1000
-X=np.random.lognormal(0,1.5,n)-np.exp(1.5**2/2)
-huber_mean_result = arr.huber_mean(X)
-agd_result = arr.agd(X)
-agd_bb_result = arr.agd_bb(X)
+X = rlnorm(n, 0, 1.5) - exp(1.5^2 / 2)
+huberMean = huberMean(X)
+agd = agd(X)
+agdBB = agdBB(X)
 ```
 
 Second, for each setting, we generate an independent sample of size *n = 100* and compute four mean estimators: the Sample Mean, the Huber estimator, the Adaptive Gradient Descent estimator, and the Adaptive Gradient Descent with Barzilai-Borwein Method. **Figure 1** displays the &alpha;-quantile of the estimation error, with &alpha; ranging from *0.5* to *1* based on 2000 simulations.
